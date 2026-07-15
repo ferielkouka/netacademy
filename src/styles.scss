@@ -1,0 +1,209 @@
+/* ==========================================================
+   netacadAcademy — Styles globaux
+   Basé sur : palette-couleurs-linguaflow.html (charte v1.0)
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@500;700&display=swap');
+
+:root {
+  /* Couleurs primaires */
+  --color-primary: #1565C0;      /* Bleu Principal */
+  --color-primary-dark: #0D3B7A; /* Bleu Foncé */
+
+  /* Couleurs secondaires */
+  --color-light-blue: #E8F4F8;   /* Bleu Clair */
+  --color-sky-blue: #2196F3;     /* Bleu Ciel */
+  --color-medium-blue: #64B5F6;  /* Bleu Moyen */
+
+  /* Neutres */
+  --color-white: #FFFFFF;
+  --color-gray-light: #F8FAFC;
+  --color-gray-medium: #6B7280;
+  --color-gray-dark: #1F2937;
+  --color-black: #111827;
+
+  /* Sémantique */
+  --color-danger: #EF4444;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  --gradient-light: linear-gradient(180deg, var(--color-light-blue), var(--color-white));
+
+  /* Typo */
+  --font-heading: 'Poppins', Arial, sans-serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-zh: 'Noto Sans SC', sans-serif;
+
+  /* Rayon / ombres (cohérent avec les captures fournies : cartes arrondies, boutons pilule) */
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --shadow-card: 0 10px 30px rgba(13, 59, 122, 0.08);
+  --shadow-card-hover: 0 20px 40px rgba(13, 59, 122, 0.14);
+
+  /* Rythme vertical des sections */
+  --section-padding: 96px;
+
+  /* Hauteur du header sticky, utilisée pour corriger le scroll vers les ancres */
+  --header-height: 76px;
+}
+
+/* Corrige le décalage des ancres (#accueil, #langues, etc.) sous le header sticky */
+section[id], footer[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-gray-dark);
+  background: var(--color-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+  color: var(--color-gray-dark);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Boutons réutilisables (utilisés par plusieurs composants) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--color-white);
+  color: var(--color-primary-dark);
+}
+.btn-primary:hover { box-shadow: var(--shadow-card-hover); }
+
+.btn-dark {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn-solid {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.btn-solid:hover { background: var(--color-primary-dark); }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Utilitaires de section */
+.section {
+  padding: var(--section-padding) 24px;
+}
+.section-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.section-head {
+  max-width: 620px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+.section-head h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.section-head p {
+  color: var(--color-gray-medium);
+  font-size: 1rem;
+}
+
+/* Animation générique "apparition au scroll" pilotée par la directive appRevealOnScroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 860px) {
+  :root {
+    --section-padding: 64px;
+  }
+}

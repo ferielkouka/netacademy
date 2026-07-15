@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="nav">
+    <a href="#accueil" class="logo">
+      <span class="logo-icon">🌐</span> Net<span>Academy</span>
+    </a>
+
+    <nav class="nav-links" [class.open]="menuOuvert">
+      <a href="#accueil" (click)="allerVersSection($event, 'accueil')">Accueil</a>
+      <a href="#pourquoi" (click)="allerVersSection($event, 'pourquoi')">Formations</a>
+      <a href="#langues" (click)="allerVersSection($event, 'langues')">Langues</a>
+      <a href="#packs" (click)="allerVersSection($event, 'packs')">Packs</a>
+      <a href="#methode" (click)="allerVersSection($event, 'methode')">Méthode</a>
+      <a href="#faq" (click)="allerVersSection($event, 'faq')">FAQ</a>
+      <a href="#contact" (click)="allerVersSection($event, 'contact')">Contact</a>
+    </nav>
+
+    <button class="btn btn-primary nav-cta" (click)="modalService.open()">S'inscrire</button>
+
+    <button class="burger" (click)="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

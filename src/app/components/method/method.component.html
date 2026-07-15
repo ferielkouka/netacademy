@@ -1,0 +1,27 @@
+<section id="methode" class="method">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2>Notre méthode</h2>
+      <p>Un parcours simple en 4 étapes, du premier contact à la pratique en ligne</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div
+        class="timeline-step reveal"
+        [appRevealOnScroll]="i * 120"
+        *ngFor="let etape of etapes; let i = index">
+        <div class="step-marker">
+          <span class="step-number">{{ etape.numero }}</span>
+        </div>
+        <div class="step-card">
+          <span class="step-icon">{{ etape.icone }}</span>
+          <h3>{{ etape.titre }}</h3>
+          <p>{{ etape.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

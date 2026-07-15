@@ -1,0 +1,21 @@
+<section id="langues" class="languages">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Nos langues</span>
+      <h2>Nos langues</h2>
+      <p>Choisissez parmi 7 langues différentes et commencez votre voyage linguistique</p>
+    </div>
+
+    <div class="languages-grid">
+      <div
+        class="language-card reveal"
+        [appRevealOnScroll]="i * 80"
+        *ngFor="let langue of langues; let i = index">
+        <div class="flag-badge">
+          <img [src]="'https://flagcdn.com/' + langue.paysCode + '.svg'" [alt]="langue.nom" class="flag-img">
+        </div>
+        <h3>{{ langue.nom }}</h3>
+      </div>
+    </div>
+  </div>
+</section>

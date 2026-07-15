@@ -1,0 +1,25 @@
+<section id="faq" class="faq">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Vous vous posez des questions ?</h2>
+      <p>Tout ce qu'il faut savoir sur NetAcademy et nos formations en ligne en Tunisie</p>
+    </div>
+
+    <div class="faq-list">
+      <div
+        class="faq-item reveal"
+        [class.open]="qr.ouvert"
+        [appRevealOnScroll]="i * 60"
+        *ngFor="let qr of questions; let i = index">
+        <button class="faq-question" (click)="toggle(qr)">
+          <span>{{ qr.question }}</span>
+          <span class="faq-icon">{{ qr.ouvert ? '−' : '+' }}</span>
+        </button>
+        <div class="faq-reponse" *ngIf="qr.ouvert">
+          <p>{{ qr.reponse }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+.languages {
+  background: linear-gradient(180deg, #0D3B7A 0%, #1565C0 45%, var(--color-light-blue) 100%);
+  padding: var(--section-padding) 24px;
+}
+
+.languages .section-head .eyebrow {
+  color: #BFE0FF;
+}
+.languages .section-head h2 {
+  color: var(--color-white);
+}
+.languages .section-head p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+}
+
+.language-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-card);
+  padding: 26px 12px;
+  text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease, border-color .3s ease;
+}
+.language-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.flag-badge {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background .3s ease, transform .3s ease;
+}
+.flag-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.language-card:hover .flag-badge {
+  background: var(--color-light-blue);
+  transform: scale(1.1);
+}
+
+.language-card h3 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-white);
+  transition: color .3s ease;
+}
+.language-card:hover h3 {
+  color: var(--color-primary-dark);
+}

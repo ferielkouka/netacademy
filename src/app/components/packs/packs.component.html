@@ -1,0 +1,40 @@
+<section id="packs" class="packs">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Nos offres</span>
+      <h2>Nos packs</h2>
+      <p>Des formules pensées pour le scolaire et pour progresser plus vite dans les langues</p>
+    </div>
+
+    <h3 class="packs-souscategorie">Packs scolaires</h3>
+    <div class="packs-grid">
+      <div
+        class="pack-card reveal"
+        [appRevealOnScroll]="i * 100"
+        *ngFor="let pack of packsScolaires; let i = index">
+        <div class="pack-icon">{{ pack.icone }}</div>
+        <h3>{{ pack.titre }}</h3>
+        <p>{{ pack.description }}</p>
+        <div class="pack-matieres">
+          <span class="matiere-badge" *ngFor="let matiere of pack.matieres">{{ matiere }}</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="packs-souscategorie">Packs combinés</h3>
+    <div class="packs-grid">
+      <div
+        class="pack-card pack-vedette reveal"
+        [appRevealOnScroll]="i * 100"
+        *ngFor="let pack of packsCombines; let i = index">
+        <span class="pack-reduction" *ngIf="pack.reduction">{{ pack.reduction }}</span>
+        <div class="pack-icon">{{ pack.icone }}</div>
+        <h3>{{ pack.titre }}</h3>
+        <p>{{ pack.description }}</p>
+        <div class="pack-matieres">
+          <span class="matiere-badge" *ngFor="let matiere of pack.matieres">{{ matiere }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

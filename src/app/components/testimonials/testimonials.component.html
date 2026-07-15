@@ -1,0 +1,27 @@
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Témoignages</span>
+      <h2>Ils ont appris avec nous</h2>
+      <p>Ce que nos apprenants pensent de notre centre</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div
+        class="testimonial-card reveal"
+        [appRevealOnScroll]="i * 100"
+        *ngFor="let t of temoignages; let i = index">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="quote">{{ t.citation }}</p>
+        <div class="author">
+          <div class="avatar">{{ t.initiales }}</div>
+          <div>
+            <b>{{ t.nom }}</b>
+            <span>{{ t.pays }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

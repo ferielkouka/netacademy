@@ -1,0 +1,88 @@
+<div class="modal-overlay" *ngIf="modalService.isOpen()" (click)="fermer()">
+  <div class="modal-card" (click)="arreterPropagation($event)">
+
+    <button class="modal-close" (click)="fermer()" aria-label="Fermer">✕</button>
+
+    <!-- ÉTAT : succès -->
+    <div class="modal-success" *ngIf="etat === 'succes'; else formulaire">
+      <div class="success-icon">✓</div>
+      <h3>Inscription envoyée !</h3>
+      <p>Merci, votre demande a bien été enregistrée. Notre équipe vous recontacte très vite.</p>
+      <button class="btn btn-solid" (click)="fermer()">Fermer</button>
+    </div>
+
+    <ng-template #formulaire>
+      <div class="modal-header">
+        <span class="eyebrow">Inscription</span>
+        <h3>Réservez votre place</h3>
+        <p>Remplissez ce formulaire, on vous recontacte pour la suite.</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="soumettre()" class="modal-form">
+
+        <div class="form-row two-cols">
+          <div class="field">
+            <label for="nom">Nom *</label>
+            <input id="nom" type="text" formControlName="nom" placeholder="Votre nom">
+            <span class="field-error" *ngIf="form.get('nom')?.invalid && form.get('nom')?.touched">
+              Le nom est requis (2 caractères min.)
+            </span>
+          </div>
+          <div class="field">
+            <label for="prenom">Prénom *</label>
+            <input id="prenom" type="text" formControlName="prenom" placeholder="Votre prénom">
+            <span class="field-error" *ngIf="form.get('prenom')?.invalid && form.get('prenom')?.touched">
+              Le prénom est requis (2 caractères min.)
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email <span class="optional">(facultatif)</span></label>
+            <input id="email" type="email" formControlName="email" placeholder="vous@exemple.com">
+            <span class="field-error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+              Format d'email invalide
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="telephone">Téléphone *</label>
+            <input id="telephone" type="tel" formControlName="telephone" placeholder="+216 20 000 000">
+            <span class="field-error" *ngIf="form.get('telephone')?.invalid && form.get('telephone')?.touched">
+              Numéro de téléphone requis
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="field-label-block">Langue(s) souhaitée(s) *</label>
+          <div class="langues-checkboxes" formArrayName="langues">
+            <label
+              class="checkbox-pill"
+              *ngFor="let langue of langues; let i = index"
+              [class.checked]="languesArray.at(i).value">
+              <input type="checkbox" [formControlName]="i">
+              <span class="flag">{{ langue.drapeau }}</span>
+              <span>{{ langue.nom }}</span>
+            </label>
+          </div>
+          <span class="field-error" *ngIf="!auMoinsUneLangue && form.touched">
+            Sélectionnez au moins une langue
+          </span>
+        </div>
+
+        <span class="field-error submit-error" *ngIf="etat === 'erreur'">
+          Une erreur est survenue : {{ messageErreur }}. Réessayez.
+        </span>
+
+        <button type="submit" class="btn btn-solid form-submit" [disabled]="etat === 'envoi'">
+          {{ etat === 'envoi' ? 'Envoi en cours…' : "S'inscrire maintenant" }}
+        </button>
+      </form>
+    </ng-template>
+
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<section id="pourquoi" class="why-us">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Nos atouts</span>
+      <h2>Pourquoi nous choisir ?</h2>
+      <p>Découvrez les avantages qui font de notre centre le meilleur choix pour votre apprentissage</p>
+    </div>
+
+    <div class="atouts-grid">
+      <div
+        class="atout-card reveal"
+        [appRevealOnScroll]="i * 100"
+        *ngFor="let atout of atouts; let i = index">
+        <div class="atout-icon">{{ atout.icone }}</div>
+        <h3>{{ atout.titre }}</h3>
+        <p>{{ atout.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

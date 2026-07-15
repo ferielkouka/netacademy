@@ -1,0 +1,31 @@
+<section id="accueil" class="hero">
+  <div class="hero-inner">
+    <div class="hero-text reveal-left" appRevealOnScroll>
+      <div class="live-pill"><span class="pulse"></span>312 apprenants en ligne maintenant</div>
+      <h1>Apprenez les langues du monde<span class="greet-word">{{ greetingActif.mot }}</span></h1>
+      <p>Une formation 100&nbsp;% en ligne, avec des formateurs qualifiés et une méthode moderne pour progresser rapidement.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" (click)="modalService.open()">Je m'inscris</button>
+      </div>
+      <div class="lang-dock">
+        <span
+          class="lang-chip"
+          [class.active]="i === indexActif"
+          *ngFor="let g of greetings; let i = index">{{ g.code }}</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-right" appRevealOnScroll="150">
+      <div class="greet-big">{{ greetingActif.mot }}</div>
+      <div class="greet-caption" [class.zh]="greetingActif.zh">{{ greetingActif.legende }}</div>
+      <div class="flags-row">
+        <img
+          *ngFor="let g of greetings; let i = index"
+          [class.active]="i === indexActif"
+          [src]="'https://flagcdn.com/' + g.paysCode + '.svg'"
+          [alt]="g.code"
+          class="flag-icon">
+      </div>
+    </div>
+  </div>
+</section>

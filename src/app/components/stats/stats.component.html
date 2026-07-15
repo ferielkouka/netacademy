@@ -1,0 +1,13 @@
+<section class="stats">
+  <div class="section-inner stats-grid">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-icon">{{ stat.icone }}</div>
+      <span
+        class="stat-value"
+        appCounterAnimate
+        [countTo]="stat.valeur"
+        [suffix]="stat.suffixe">0{{ stat.suffixe }}</span>
+      <span class="stat-label">{{ stat.label }}</span>
+    </div>
+  </div>
+</section>
